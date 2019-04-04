@@ -1,0 +1,7 @@
+---
+
+- name: ensure apache started
+  service:
+    name: httpd
+    enabled: yes
+  become: true
