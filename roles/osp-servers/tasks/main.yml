@@ -33,4 +33,21 @@
   register: instancefloatingip
   loop: "{{ cloud_instances }}"
 
-##- name: Wait for server to be available
+- name: Gather server info
+  os_server_facts:
+    cloud: ospcloud
+  register: result
+  tags:
+    - openstack-servers
+
+- name: Wait for server to be available
+  wait_for:
+    host: "{{ item.public_v4 }}"
+    port: 22
+    search_regex: OpenSSH
+    timeout: 600
+  delegate_to: "{{ inventory_hostname }}"
+  with_items: 
+    - "{{ result.ansible_facts.openstack_servers }}"
+  tags:
+    - openstack-servers
