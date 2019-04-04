@@ -5,6 +5,8 @@
       cloud: ospcloud
       region_name: RegionOne
      register: result
+   - debug:
+       var: result.ansible_facts
    - name: Add host
      add_host:
       name: "{{ item.public_v4 }}"
