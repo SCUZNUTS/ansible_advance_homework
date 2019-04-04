@@ -1,5 +1,14 @@
 - hosts: frontends
   gather_facts: false
   tasks:
-  - name: Use Uri module for wrting smoke test.
+  - name: Check haproxy is serving website
+    uri:
+      url: http://{{ item }}
+      return_content: yes
+    with_items: "{{ groups['frontends'] }}"
+    register: webpage
+    tags:
+      - osp.smoke
   - name: Fail if 'Ansible has done its job' is not in the page content
+    fail:
+    when: "'Ansible' not in webpage.stdout"
