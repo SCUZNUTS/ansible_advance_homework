@@ -7,6 +7,7 @@
     tower_password: "{{ password }}"
     tower_verify_ssl: no
     scm_url: "{{ scm_url }}"
+    scm_type: git
     scm_update_on_launch: true
     scm_delete_on_update: true
     scm_clean: true
