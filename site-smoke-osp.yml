@@ -8,6 +8,8 @@
     register: openstack_info
     tags:
       - osp.smoke
+  - debug:
+      var: openstack_info
   - name: Curl website
     command: curl "http://{{item.ansible_facts.openstack_servers.public_v4}}"
     with_items:
