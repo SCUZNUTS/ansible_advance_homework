@@ -5,13 +5,6 @@
       cloud: ospcloud
       region_name: RegionOne
     register: openstack_info
-
-#  - debug:
-#      var: openstack_info.ansible_facts.openstack_servers.host_id
-#  - debug:
-#      var: openstack_info.ansible_facts
-
-
     
   - name: Delete instances
     os_server:
