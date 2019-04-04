@@ -8,12 +8,18 @@
     register: openstack_info
     tags:
       - osp.smoke
-  - debug:
-      var: openstack_info
-  - name: Curl website
-    command: curl "http://{{item.public_v4}}"
-    with_items:
-       - "{{ openstack_info.ansible_facts.openstack_servers }}"
+  - name: Check haproxy is serving website
+    uri:
+      url: http://{{item.public_v4}}
+    loop: "{{ openstack_info.ansible_facts.openstack_servers }}"
+    register: webpage
+    tags:
+      - osp.smoke
+
+#  - name: Curl website
+#    command: curl "http://{{item.public_v4}}"
+#    with_items:
+#       - "{{ openstack_info.ansible_facts.openstack_servers }}"
     register: webpage
     tags:
       - osp.smoke
