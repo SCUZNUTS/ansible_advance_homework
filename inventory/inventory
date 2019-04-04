@@ -1,0 +1,10 @@
+[bastion]
+bastion.da86.example.opentlc.com
+
+[workstation]
+workstation-1cd4.rhpds.opentlc.com
+
+[all:vars]
+ansible_user=cloud-user
+ansible_ssh_private_key_file=/root/.ssh/openstack.pem
+ansible_ssh_common_args='-o StrictHostKeyChecking=no'
