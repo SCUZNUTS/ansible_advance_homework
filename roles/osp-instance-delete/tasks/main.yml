@@ -6,9 +6,12 @@
       region_name: RegionOne
     register: openstack_info
 
+  - debug:
+      var: openstack_info.ansible_facts.openstack_servers.host_id
+    
   - name: Delete instances
     os_server:
       cloud: ospcloud
-      name: "{{ item.host_id }}"
+      name: "{{ item.instance_name }}"
       state: absent
     loop: "{{ openstack_info.ansible_facts.openstack_servers }}"
