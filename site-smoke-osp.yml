@@ -1,7 +1,7 @@
 - hosts: workstation
   gather_facts: false
   tasks:
-  - name: OpenStack servers
+  - name: gather openstack frontend servers
     os_server_facts:
      cloud: ospcloud
      server: 'frontend'
@@ -11,9 +11,9 @@
   - debug:
       var: openstack_info
   - name: Curl website
-    command: curl "http://{{item.ansible_facts.openstack_servers.public_v4}}"
+    command: curl "http://{{item.public_v4}}"
     with_items:
-       - "{{ openstack_info }}"
+       - "{{ openstack_info.ansible_facts.openstack_servers }}"
     register: webpage
     tags:
       - osp.smoke
