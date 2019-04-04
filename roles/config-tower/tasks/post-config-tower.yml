@@ -18,6 +18,7 @@
     tower_password: "{{ password }}"
     ssh_key_data: "/root/.ssh/openstack.pem"
     username: cloud-user
+    tower_verify_ssl: no
 
 - name: Create Inventory
   command: |
@@ -48,6 +49,7 @@
     tower_verify_ssl: no
     ssh_key_data: /root/.ssh/mykey.pem
     username: "{{ opentlc_login }}"
+    tower_verify_ssl: no
 
 - name: Remove secret
   file:
