@@ -8,6 +8,10 @@
 
   - debug:
       var: openstack_info.ansible_facts.openstack_servers.host_id
+  - debug:
+      var: openstack_info.ansible_facts.openstack_servers.instance_name
+
+
     
   - name: Delete instances
     os_server:
@@ -15,3 +19,4 @@
       name: "{{ item.instance_name }}"
       state: absent
     loop: "{{ openstack_info.ansible_facts.openstack_servers }}"
+    become: yes
