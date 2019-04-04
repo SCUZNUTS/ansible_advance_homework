@@ -10,10 +10,10 @@
 - name: Machine Credentail to connect to workstation using openstack.pub
   tower_credential:
     name: Connect_to_workstation
-    organization: Default
+    organization: "{{ org_name }}"
     state: present
     kind: ssh
-    tower_host: tower1.{{tower_GUID}}.example.opentlc.com
+##    tower_host: tower1.{{tower_GUID}}.example.opentlc.com
     tower_username: "{{ user_name }}"
     tower_password: "{{ password }}"
     ssh_key_data: "/root/.ssh/openstack.pem"
