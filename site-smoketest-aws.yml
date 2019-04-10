@@ -13,4 +13,4 @@
 #      var: webpage.results
   - name: Fail if 'Ansible has done its job' is not in the page content
     fail:
-    when: '"Ansible" not in webpage.results.content'
+    when: '"Ansible" not in webpage.results[0].content'
