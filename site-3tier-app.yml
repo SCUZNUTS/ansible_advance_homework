@@ -5,7 +5,7 @@
 
 
 - name: Deploy common files to all hosts
-  hosts: all
+  hosts: all:!localhost
   gather_facts: false
   roles:
    - { role: ../roles/deploy_yum_repos }
