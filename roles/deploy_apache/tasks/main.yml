@@ -1,5 +1,6 @@
 ---
 
+## Here we are installing the latest version of apache
 - name: install apache
   yum:
     name: httpd
@@ -9,7 +10,7 @@
   become: yes
   tags:
     - install_apache
-    
+
 - name: ensure apache enabled to start at boot
   service:
     name: httpd

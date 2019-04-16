@@ -1,31 +1,45 @@
-Role Name
+config-tower
 =========
 
-A brief description of the role goes here.
+Role to configure ansible tower job templates and workflow
 
 Requirements
 ------------
-
-Any pre-requisites that may not be covered by Ansible itself or the role should be mentioned here. For instance, if the role uses the EC2 module, it may be a good idea to mention in this section that the boto package is required.
+vars/main.yml | Very important file to review. All the variable values are set there. Please do not make any changes in the file
 
 Role Variables
 --------------
+        - TOWER_GUID: <Ansible Tower Homework GUID from mail>
+        - OSP_GUID: <Openstack for Ansible GUID from mail>
+        - OPENTLC_LOGIN: <username-company.com>
+        - OPENTLC_PASSWORD: <your openlc account password>
+        - GITHUB_REPO: https://github.com/<githubhandler>/ansible_advance_homework
+        - JQ_REPO_BASE: http://www.opentlc.com/download/ansible_bootcamp
+        - REGION: <enter region name example us-east-1>
+        - RH_MAIL_ID: <your mail id for dynamic inventory tag>
 
-A description of the settable variables for this role should go here, including any variables that are in defaults/main.yml, vars/main.yml, and any variables that can/should be set via parameters to the role. Any variables that are read from other roles and/or the global scope (ie. hostvars, group vars, etc.) should be mentioned here as well.
 
 Dependencies
 ------------
 
-A list of other roles hosted on Galaxy should go here, plus any details in regards to parameters that may need to be set for other roles, or variables that are used from other roles.
 
 Example Playbook
 ----------------
 
 Including an example of how to use your role (for instance, with variables passed in as parameters) is always nice for users too:
 
-    - hosts: servers
+    - hosts: localhost
       roles:
-         - { role: username.rolename, x: 42 }
+         - { role: config-tower }
+	  vars:
+        - TOWER_GUID: <Ansible Tower Homework GUID from mail>
+        - OSP_GUID: <Openstack for Ansible GUID from mail>
+        - OPENTLC_LOGIN: <username-company.com>
+        - OPENTLC_PASSWORD: <your openlc account password>
+        - GITHUB_REPO: https://github.com/<githubhandler>/ansible_advance_homework
+        - JQ_REPO_BASE: http://www.opentlc.com/download/ansible_bootcamp
+        - REGION: <enter region name example us-east-1>
+        - RH_MAIL_ID: <your mail id for dynamic inventory tag>
 
 License
 -------
